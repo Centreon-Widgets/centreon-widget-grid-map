@@ -1,27 +1,33 @@
 var timeout;
 
 jQuery(function() {
-    console.log("jQuery function");
-    loadTop10();
+    loadgridMap();
 });
 
-function loadTop10() {
-    jQuery.ajax("./index.php", {
+function loadgridMap() {
+   jQuery.ajax("./index.php?widgetId=" + widgetId, {
         success : function(htmlData) {
-            jQuery("#infoAjax").html("");
-            jQuery("#infoAjax").html(htmlData);
-            var h = document.getElementById("Grid-map").scrollHeight + 10;
+            jQuery("#Grid-map").html("");
+            jQuery("#Grid-map").html(htmlData);
+            console.log(htmlData);
+            var h = document.getElementById("map-icon");
             if (h){
-                parent.iResize(window.name, h);
-            } else { 
-                parent.iResize(window.name, 200);
+                parent.iResize(window.name, h.scrollHeight + 10);
+            } else {
+               parent.iResize(window.name, 200);
             }
         }
     });
-    if (autoRefresh) {
+    if (autoRefresh > 0) {
         if (timeout) {
             clearTimeout(timeout);
         }
-        timeout = setTimeout(loadTop10, (30 * 1000));
+        timeout = setTimeout(refreshgridMap, (autoRefresh * 1000));
     }
 }
+
+function refreshgridMap() {
+  //location.reload();
+  loadgridMap();
+}
+
