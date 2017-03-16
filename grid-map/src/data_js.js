@@ -11,7 +11,7 @@ function loadgridMap() {
 }
 
 function resizegridMap() {
-            var h = document.getElementById("map-icon");
+            var h = document.getElementById("Grid-map");
             if (h){
                 parent.iResize(window.name, h.scrollHeight + 10);
             } else {
