@@ -107,7 +107,8 @@ if ($preferences['host_group']) {
             AND T2.hostgroup_id = " . $preferences['host_group'] .
                 ($centreon->user->admin == 0
                     ? " AND T1.host_id = acl.host_id AND T2.host_id = acl.host_id AND acl.group_id IN (" .
-                        ($grouplistStr != "" ? $grouplistStr : 0).")" : ""
+                        ($grouplistStr != "" ? $grouplistStr : 0).")"
+                    : ""
                 ) . "
         ORDER BY T1.name";
 
@@ -116,7 +117,8 @@ if ($preferences['host_group']) {
         FROM services T1 " . ($centreon->user->admin == 0 ? ", centreon_acl acl " : "") . "
         WHERE T1.enabled = 1 " . ($centreon->user->admin == 0
             ? " AND T1.service_id = acl.service_id AND acl.group_id IN (" .
-                ($grouplistStr != "" ? $grouplistStr : 0).") AND (" : " AND ("
+                ($grouplistStr != "" ? $grouplistStr : 0).") AND ("
+            : " AND ("
         );
     foreach (explode(",", $preferences['service']) as $elem) {
         if (!$inc) {
@@ -135,7 +137,8 @@ if ($preferences['host_group']) {
             AND T1.description NOT LIKE 'ba_%' AND T1.description NOT LIKE 'meta_%' " .
                 ($centreon->user->admin == 0
                     ? " AND T1.service_id = acl.service_id AND acl.group_id IN (" .
-                    ($grouplistStr != "" ? $grouplistStr : 0).")" : ""
+                        ($grouplistStr != "" ? $grouplistStr : 0).")"
+                    : ""
                 );
     $inc = 0;
 
