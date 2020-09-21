@@ -177,7 +177,7 @@ if ($preferences['host_group']) {
         $data_service[$row['description']] = array(
             'description' => $row['description'],
             'hosts' => array(),
-            'hostsStatus' => array(),
+            'hostsStatus' => [],
             'details_uri' => []
         );
     }
