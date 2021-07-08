@@ -56,10 +56,10 @@ $widgetId = filter_var($_REQUEST['widgetId'], FILTER_VALIDATE_INT);
 
 /* INIT */
 $colors = array(
-    0 => '#8FCF3C',
-    1 => '#ff9a13',
-    2 => '#e00b3d',
-    3 => '#bcbdc0',
+    0 => '#88B917',
+    1 => '#FF9A13',
+    2 => '#E00B3D',
+    3 => '#BCBDC0',
     4 => '#2AD1D4'
 );
 
